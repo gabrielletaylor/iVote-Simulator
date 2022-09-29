@@ -3,8 +3,9 @@ import java.util.Random;
 
 public class SimulationDriver {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 		// TODO Auto-generated method stub
+		final int NUM_QUESTIONS = 3;
 		Question q1 = createQ1();
 		Question q2 = createQ2();
 		Question q3 = createQ3();
@@ -16,20 +17,11 @@ public class SimulationDriver {
 			students[i] = new Student();
 		}
 		
-		System.out.println(NUM_STUDENTS);
-		
-		VotingService iVoteService = new VotingService();
-		getStudentAnswers(students, q1);
-		iVoteService.votingService(q1, students);
-		iVoteService.displayResults();
-		
-		getStudentAnswers(students, q2);
-		iVoteService.votingService(q2, students);
-		iVoteService.displayResults();
-		
-		getStudentAnswers(students, q3);
-		iVoteService.votingService(q3, students);
-		iVoteService.displayResults();
+		System.out.println("iVote Simulator");
+		System.out.println("Number of students participating in poll: " + NUM_STUDENTS);
+		simulateResults(students, q1);
+		simulateResults(students, q2);
+		simulateResults(students, q3);
 
 	}
 	
@@ -66,10 +58,20 @@ public class SimulationDriver {
 		return mcq;
 	}
 	
-	public static void getStudentAnswers(Student[] students, Question q) {
-		for (int i = 0; i < students.length; i++) {
-			students[i].submitAnswer(q);
+	public static void getStudentAnswers(Student[] s, Question q) {
+		for (int i = 0; i < s.length; i++) {
+			s[i].submitAnswer(q);
 		}
+	}
+	
+	public static void simulateResults(Student[] s, Question q) throws InterruptedException {
+		System.out.println(q);
+		System.out.println("Getting student answers...");
+		Thread.sleep(5000);
+		getStudentAnswers(s, q);
+		VotingService iVoteService = new VotingService(q);
+		iVoteService.acceptSubmissions(s);
+		iVoteService.displayResults();
 	}
 
 }

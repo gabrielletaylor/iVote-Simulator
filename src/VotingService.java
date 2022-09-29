@@ -4,15 +4,17 @@ import java.util.Map;
 
 public class VotingService {
 	
-	private int a, b, c, d, e;
+	private int a, b, c, d, e = 0;
 	private Question question;
+	private ArrayList<String> choices;
 	private Map<String, Integer> results = new LinkedHashMap<>();
 	
-	public void votingService(Question question, Student[] students) {
-		a = 0; b = 0; c = 0; d = 0; e = 0;
+	public VotingService(Question question) {
 		this.question = question;
-		ArrayList<String> choices = question.getChoices();
-		
+		this.choices = question.getChoices();
+	}
+	
+	public void acceptSubmissions(Student[] students) {
 		if (question.onlyOneChoice()) {
 			for (int i = 0; i < students.length; i++) {
 				if (students[i].getAnswers().get(0).startsWith("A")) {
@@ -54,12 +56,12 @@ public class VotingService {
 	}
 	
 	public void displayResults() {
+		System.out.println("Results:");
 		System.out.println(question.getQuestion());
 		for (String key: results.keySet()) {
 			System.out.println("   " + key + ": " + results.get(key));
 		}
 		System.out.println();
-		results.clear();
 	}
 	
 }
