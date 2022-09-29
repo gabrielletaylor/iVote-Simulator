@@ -29,5 +29,13 @@ public class Question implements QuestionInterface {
 	public boolean onlyOneChoice() {
 		return true | false;
 	}
+	
+	public String toString() {
+		String choicesFormatted = "";
+		for (int i = 0; i < choices.size(); i++) {
+			choicesFormatted += "   " + choices.get(i) + "\n";
+		}
+		return "\n" + question + "\n" + choicesFormatted;
+	}
 
 }

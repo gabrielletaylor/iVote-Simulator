@@ -12,4 +12,6 @@ public interface QuestionInterface {
 	
 	public boolean onlyOneChoice();
 	
+	public String toString();
+	
 }
