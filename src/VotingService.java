@@ -20,16 +20,14 @@ public class VotingService {
 	/** Method to accept student answer submissions for the current question
 	 * Saves results of each question to a hashmap that tallies how many students
 	 * chose that specific choice for each choice that a question has.
+	 * Prevents multiple submissions from a single student by only accepting
+	 * the most recent recorded submission.
 	 @param student		List of students that will be submitting their answers. */
 	public void acceptSubmissions(ArrayList<Student> student) {
 		// Question is a single choice question
 		if (question.onlyOneChoice()) {
 			// Loop through all the students that are submitting an answer
 			for (int i = 0; i < student.size(); i++) {
-//				// Prevent multiple submissions from the same student
-//				if (student.get(i).getNumberOfSubmissions() > 1) {
-//					continue;
-//				}
 				// Student chose answer A, increase a count
 				if (student.get(i).getAnswers().get(0).startsWith("A")) {
 					a++;
@@ -48,10 +46,6 @@ public class VotingService {
 		else {
 			// Loop through all students that are submitting an answer
 			for (int i = 0; i < student.size(); i++) {
-//				// Prevent multiple submissions from the same student
-//				if (student.get(i).getNumberOfSubmissions() > 1) {
-//					continue;
-//				}
 				// Loop through student's answers chosen for question
 				for (int j = 0; j < student.get(i).getAnswers().size(); j++) {
 					// Student chose answer A, increase a count

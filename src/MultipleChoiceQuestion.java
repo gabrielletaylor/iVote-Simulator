@@ -14,19 +14,6 @@ public class MultipleChoiceQuestion extends Question {
 		onlyOneChoice = false;
 	}
 	
-//	public MultipleChoiceQuestion(String question, ArrayList<String> choices, ArrayList<String> correctAnswers) {
-//		super(question, choices);
-//		this.correctAnswers = correctAnswers;
-//	}
-//	
-//	public ArrayList<String> getCorrectAnswers() {
-//		return correctAnswers;
-//	}
-//	
-//	public void setCorrectAnswers(ArrayList<String> correctAnswers) {
-//		this.correctAnswers = correctAnswers;
-//	}
-	
 	/** Method that overrides superclass function
 	 @return false; question allows one or more choices to be chosen. */
 	@Override

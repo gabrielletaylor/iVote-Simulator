@@ -14,19 +14,6 @@ public class SingleChoiceQuestion extends Question {
 		onlyOneChoice = true;
 	}
 	
-//	public SingleChoiceQuestion(String question, ArrayList<String> choices, String correctAnswer) {
-//		super(question, choices);
-//		this.correctAnswer = correctAnswer;
-//	}
-//	
-//	public String getCorrectAnswer() {
-//		return correctAnswer;
-//	}
-//	
-//	public void setCorrectAnswer(String correctAnswer) {
-//		this.correctAnswer = correctAnswer;
-//	}
-	
 	/** Method that overrides superclass function
 	 @return true; question allows only one choice to be chosen. */
 	@Override
